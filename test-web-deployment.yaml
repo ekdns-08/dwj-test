@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: tomcat-server
   labels:
-    app: test-web
+    app: test
   annotations:
     kubernetes.io/change-cause: web-portal-docker:1.0.10
   namespace: test
@@ -16,12 +16,11 @@ spec:
       maxSurge: 1
   selector:
     matchLabels:
-      app: test-web
+      app: test
   template:
     metadata:
-      name: tomcat-server
       labels:
-        app: test-web
+        app: test
     spec:
       containers:
         - name: tomcat-server
