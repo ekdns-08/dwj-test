@@ -32,9 +32,6 @@ spec:
             requests:
               cpu: 10m
               memory: 300Mi
-          volumeMounts:
-            - mountPath: "/prod/web-portal"
-              name: prod-nas
           livenessProbe:
             exec:
               command: ["cat", "/prod/web-portal/ready.txt"]
@@ -46,7 +43,3 @@ spec:
             httpGet:
               path: /
               port: 8080
-      volumes:
-        - name: prod-nas
-          persistentVolumeClaim:
-            claimName: prod-nas
