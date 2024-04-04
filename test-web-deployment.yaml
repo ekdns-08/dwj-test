@@ -43,3 +43,5 @@ spec:
             httpGet:
               path: /bsp
               port: 8080
+      imagePullSecrets:
+        - name: regsecret
