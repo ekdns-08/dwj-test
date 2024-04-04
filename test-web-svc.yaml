@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: tomcat-server-service
+  name: test-server-service
   labels:
     app: tomcat
   namespace: test
