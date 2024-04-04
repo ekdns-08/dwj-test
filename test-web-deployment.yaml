@@ -41,5 +41,5 @@ spec:
             initialDelaySeconds: 10
             periodSeconds: 5
             httpGet:
-              path: /
+              path: /bsp
               port: 8080
