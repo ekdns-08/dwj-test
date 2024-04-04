@@ -36,10 +36,10 @@ spec:
             periodSeconds: 10
             httpGet:
               path: /
-              port: 8080
+              port: 8081
           readinessProbe:
             initialDelaySeconds: 10
             periodSeconds: 5
             httpGet:
               path: /
-              port: 8080
+              port: 8081
