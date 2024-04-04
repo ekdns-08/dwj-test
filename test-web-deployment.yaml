@@ -33,10 +33,11 @@ spec:
               cpu: 10m
               memory: 300Mi
           livenessProbe:
-            exec:
-              command: ["cat", "/prod/web-portal/ready.txt"]
-            initialDelaySeconds: 10
-            periodSeconds: 5
+            initialDelaySeconds: 90
+            periodSeconds: 10
+            httpGet:
+              path: /
+              port: 8080
           readinessProbe:
             initialDelaySeconds: 10
             periodSeconds: 5
