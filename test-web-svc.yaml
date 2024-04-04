@@ -3,12 +3,12 @@ kind: Service
 metadata:
   name: test-server-service
   labels:
-    app: tomcat
+    app: test-web
   namespace: test
 spec:
   type: NodePort
   selector:
-    app: tomcat
+    app: test-web
   ports:
     - protocol: TCP
       port: 8081
