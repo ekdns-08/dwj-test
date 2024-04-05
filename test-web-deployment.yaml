@@ -35,13 +35,13 @@ spec:
             initialDelaySeconds: 90
             periodSeconds: 10
             httpGet:
-              path: /
+              path: /bsp
               port: 8080
           readinessProbe:
             initialDelaySeconds: 10
             periodSeconds: 5
             httpGet:
-              path: /
+              path: /bsp
               port: 8080
       imagePullSecrets:
         - name: regsecret
