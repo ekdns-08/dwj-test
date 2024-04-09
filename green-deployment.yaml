@@ -1,28 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tomcat-server-green
+  name: tomcat-server
   labels:
     app: test-web
   annotations:
-    kubernetes.io/change-cause: web-portal-docker:1.0.11
+    kubernetes.io/change-cause: web-portal-docker:1.0.10
   namespace: test
 spec:
   replicas: 3
   progressDeadlineSeconds: 120
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
   selector:
     matchLabels:
       app: test-web
-      color: green
   template:
     metadata:
       labels:
         app: test-web
-        color: green
     spec:
       containers:
         - name: tomcat-server
-          image: seoulbigdata-registry.ncr.gov-ntruss.com/web-portal-docker:1.0.11
+          image: seoulbigdata-registry.ncr.gov-ntruss.com/web-portal-docker:1.0.10
           ports:
             - containerPort: 8080
           resources:
