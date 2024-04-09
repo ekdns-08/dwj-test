@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tomcat-server
+  labels:
+    app: test-web
+  annotations:
+    kubernetes.io/change-cause: web-portal-docker:1.0.11
+  namespace: test
+spec:
+  replicas: 3
+  progressDeadlineSeconds: 120
+  selector:
+    matchLabels:
+      app: test-web
+      color: green
+  template:
+    metadata:
+      labels:
+        app: test-web
+        color: green
+    spec:
+      containers:
+        - name: tomcat-server
+          image: seoulbigdata-registry.ncr.gov-ntruss.com/web-portal-docker:1.0.11
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: 10m
+              memory: 300Mi
+          livenessProbe:
+            initialDelaySeconds: 90
+            periodSeconds: 10
+            httpGet:
+              path: /bsp
+              port: 8080
+          readinessProbe:
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            httpGet:
+              path: /bsp
+              port: 8080
+      imagePullSecrets:
+        - name: regsecret
