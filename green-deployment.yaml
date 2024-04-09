@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tomcat-server
+  name: tomcat-server-green
   labels:
     app: test-web
   annotations:
