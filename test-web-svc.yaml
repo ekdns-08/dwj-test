@@ -9,7 +9,6 @@ spec:
   type: NodePort
   selector:
     app: test-web
-    color: blue
   ports:
     - protocol: TCP
       port: 8081
