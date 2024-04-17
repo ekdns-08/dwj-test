@@ -1,11 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tomcat-server
+  name: nginx-server
   labels:
     app: test-web
   annotations:
-    kubernetes.io/change-cause: web-portal-docker:1.0.10
+    kubernetes.io/change-cause: ekdns/myrepo:latest
   namespace: test
 spec:
   replicas: 3
@@ -13,18 +13,16 @@ spec:
   selector:
     matchLabels:
       app: test-web
-      color: blue
   template:
     metadata:
       labels:
         app: test-web
-        color: blue
     spec:
       containers:
-        - name: tomcat-server
-          image: seoulbigdata-registry.ncr.gov-ntruss.com/web-portal-docker:1.0.10
+        - name: nginx-server
+          image: ekdns/myrepo:latest
           ports:
-            - containerPort: 8080
+            - containerPort: 80
           resources:
             requests:
               cpu: 10m
@@ -33,13 +31,11 @@ spec:
             initialDelaySeconds: 90
             periodSeconds: 10
             httpGet:
-              path: /bsp
-              port: 8080
+              path: /*
+              port: 80
           readinessProbe:
             initialDelaySeconds: 10
             periodSeconds: 5
             httpGet:
-              path: /bsp
+              path: /*
               port: 8080
-      imagePullSecrets:
-        - name: regsecret
