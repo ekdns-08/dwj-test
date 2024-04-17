@@ -31,11 +31,11 @@ spec:
             initialDelaySeconds: 90
             periodSeconds: 10
             httpGet:
-              path: /*
+              path: /
               port: 80
           readinessProbe:
             initialDelaySeconds: 10
             periodSeconds: 5
             httpGet:
-              path: /*
+              path: /
               port: 80
