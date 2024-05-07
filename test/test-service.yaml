@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mtv-dotnet-service
-  namespace: test
+  namespace: mtv-dotnet
   annotations:
     alb.ingress.kubernetes.io/healthcheck-path: /bsp/mtv
   labels:
@@ -15,7 +15,7 @@ spec:
   - protocol: TCP
     port: 5000
     targetPort: 5000
-    nodePort: 30088
+    nodePort: 30089
   sessionAffinity: ClientIP
   sessionAffinityConfig:
     clientIP:
