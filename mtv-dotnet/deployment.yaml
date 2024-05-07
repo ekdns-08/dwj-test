@@ -1,1 +1,41 @@
-
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-server
+  labels:
+    app: test-web
+  annotations:
+    kubernetes.io/change-cause: ekdns/myrepo:latest
+  namespace: test
+spec:
+  replicas: 3
+  progressDeadlineSeconds: 120
+  selector:
+    matchLabels:
+      app: test-web
+  template:
+    metadata:
+      labels:
+        app: test-web
+    spec:
+      containers:
+        - name: nginx-server
+          image: ekdns/myrepo:latest
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: 10m
+              memory: 300Mi
+          livenessProbe:
+            initialDelaySeconds: 90
+            periodSeconds: 10
+            httpGet:
+              path: /
+              port: 80
+          readinessProbe:
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            httpGet:
+              path: /
+              port: 80
