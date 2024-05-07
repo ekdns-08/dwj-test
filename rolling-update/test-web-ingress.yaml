@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: test-ingress
+  namespace: test
+  annotations:
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
+    alb.ingress.kubernetes.io/description: 'test ALB ingress controller'
+    alb.ingress.kubernetes.io/load-balancer-name: 'test-alb'
+    alb.ingress.kubernetes.io/load-balancer-size: 'medium'
+    alb.ingress.kubernetes.io/enable-sticky-session: 'true'
+    alb.ingress.kubernetes.io/actions.test-server-service: >
+      {"type":"targetGroup","targetGroup":{"targetGroups":[{"serviceName":"test-server-service","servicePort":80,"weight":100}],"enableStickySession":true}}
+    alb.ingress.kubernetes.io/healthcheck-path: "/"
+  labels:
+    app: test-alb-ingress
+spec:
+  ingressClassName: alb
+  rules:
+  - host:
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+             name: test-server-service
+             port: 
+                name: use-annotation
