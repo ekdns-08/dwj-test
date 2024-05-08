@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: test-mtv
+  name: test-mtv-deployment
   labels:
     app: test-mtv
   annotations:
