@@ -5,12 +5,12 @@ metadata:
     alb.ingress.kubernetes.io/healthcheck-path: /
   name: test-server-svc
   labels:
-    app: test
+    app: test-web
   namespace: test
 spec:
   type: NodePort
   selector:
-    app: test
+    app: test-web
   ports:
     - protocol: TCP
       port: 80
