@@ -24,6 +24,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-             name: test-server-service
+             name: test-server-svc
              port: 
                 name: use-annotation
