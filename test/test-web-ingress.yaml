@@ -9,21 +9,20 @@ metadata:
     alb.ingress.kubernetes.io/load-balancer-name: 'test-alb'
     alb.ingress.kubernetes.io/load-balancer-size: 'medium'
     alb.ingress.kubernetes.io/enable-sticky-session: 'true'
-    alb.ingress.kubernetes.io/actions.test-server-service: >
-      {"type":"targetGroup","targetGroup":{"targetGroups":[{"serviceName":"test-server-service","servicePort":80,"weight":100}],"enableStickySession":true}}
+    alb.ingress.kubernetes.io/actions.test-server-svc: >
+      {"type":"targetGroup","targetGroup":{"targetGroups":[{"serviceName":"test-server-svc","servicePort":80,"weight":100}],"enableStickySession":true}}
     alb.ingress.kubernetes.io/healthcheck-path: "/"
   labels:
     app: test-alb-ingress
 spec:
   ingressClassName: alb
   rules:
-  - host:
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-             name: test-server-svc
-             port: 
-                name: use-annotation
+  - http:
+    paths:
+     - path: /
+       pathType: Prefix
+       backend:
+         service:
+            name: test-server-svc
+            port: 
+               name: use-annotation
