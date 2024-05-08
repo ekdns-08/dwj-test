@@ -3,14 +3,14 @@ kind: Service
 metadata:
   annotations:
     alb.ingress.kubernetes.io/healthcheck-path: /
-  name: test-server-service
+  name: test-server-svc
   labels:
     app: test
   namespace: test
 spec:
   type: NodePort
   selector:
-    app: test-web
+    app: test
   ports:
     - protocol: TCP
       port: 80
