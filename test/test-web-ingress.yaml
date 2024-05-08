@@ -26,3 +26,10 @@ spec:
             name: test-server-svc
             port: 
                name: use-annotation
+     - path: /bsp/mtv
+       pathType: Prefix
+       backend:
+         service:
+            name: external-test-service
+            port: 
+               number: 5000
