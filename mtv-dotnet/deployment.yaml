@@ -1,28 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-server
+  name: test-mtv
   labels:
-    app: test-web
+    app: test-mtv
   annotations:
-    kubernetes.io/change-cause: ekdns/myrepo:latest
-  namespace: test
+    kubernetes.io/change-cause: seoulbigdata-registry.ncr.gov-ntruss.com/mtv-dotnet-docker:0.0.1
+  namespace: mtv-dotnet
 spec:
   replicas: 3
   progressDeadlineSeconds: 120
   selector:
     matchLabels:
-      app: test-web
+      app: test-mtv
   template:
     metadata:
       labels:
-        app: test-web
+        app: test-mtv
     spec:
       containers:
-        - name: nginx-server
-          image: ekdns/myrepo:latest
+        - name: test-mtv
+          image: seoulbigdata-registry.ncr.gov-ntruss.com/mtv-dotnet-docker:0.0.1
           ports:
-            - containerPort: 80
+            - containerPort: 5000
           resources:
             requests:
               cpu: 10m
@@ -31,11 +31,11 @@ spec:
             initialDelaySeconds: 90
             periodSeconds: 10
             httpGet:
-              path: /
-              port: 80
+              path: /bsp/mtv
+              port: 5000
           readinessProbe:
             initialDelaySeconds: 10
             periodSeconds: 5
             httpGet:
-              path: /
-              port: 80
+              path: /bsp/mtv
+              port: 5000
