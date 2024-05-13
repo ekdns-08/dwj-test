@@ -8,11 +8,11 @@ metadata:
     alb.ingress.kubernetes.io/description: 'test ALB ingress controller'
     alb.ingress.kubernetes.io/load-balancer-name: 'test-alb'
     alb.ingress.kubernetes.io/load-balancer-size: 'medium'
-#    alb.ingress.kubernetes.io/enable-sticky-session: 'true'
+    alb.ingress.kubernetes.io/enable-sticky-session: 'true'
     alb.ingress.kubernetes.io/actions.test-server-svc: >
       {"type":"targetGroup","targetGroup":{"targetGroups":[{"serviceName":"test-server-svc","servicePort":80,"weight":100}]}}
-#    alb.ingress.kubernetes.io/actions.external-test-service: >
-#      {"type":"targetGroup","targetGroup":{"targetGroups":[{"serviceName":"external-test-service","servicePort":5000,"weight":100}],"enableStickySession":true}}
+    alb.ingress.kubernetes.io/actions.external-test-service: >
+      {"type":"targetGroup","targetGroup":{"targetGroups":[{"serviceName":"external-test-service","servicePort":5000,"weight":100}],"enableStickySession":true}}
     alb.ingress.kubernetes.io/healthcheck-path: "/"
   labels:
     app: test-alb-ingress
@@ -21,13 +21,13 @@ spec:
   rules:
   - http:
      paths:
-#     - path: /bsp/mtv
-#       pathType: Prefix
-#       backend:
-#         service:
-#            name: external-test-service
-#            port: 
-#               name: use-annotation
+     - path: /bsp/mtv
+       pathType: Prefix
+       backend:
+         service:
+            name: external-test-service
+            port: 
+               name: use-annotation
      - path: /
        pathType: Prefix
        backend:
