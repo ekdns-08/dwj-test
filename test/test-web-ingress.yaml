@@ -1,4 +1,4 @@
-apiVersion: networking.k8s.io/v1
+ㅏㅕ  apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: test-ingress
@@ -12,7 +12,7 @@ metadata:
     alb.ingress.kubernetes.io/actions.test-server-svc: >
       {"type":"targetGroup","targetGroup":{"targetGroups":[{"serviceName":"test-server-svc","servicePort":80,"weight":100}]}}
     alb.ingress.kubernetes.io/actions.external-test-service: >
-      {"type":"targetGroup","targetGroup":{"targetGroups":[{"serviceName":"external-test-service","weight":100}]}}
+      {"type":"targetGroup","targetGroup":{"targetGroups":[{"serviceName":"external-test-service","servicePort":30040,"weight":100}]}}
     alb.ingress.kubernetes.io/healthcheck-path: "/"
   labels:
     app: test-alb-ingress
