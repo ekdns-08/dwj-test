@@ -27,7 +27,7 @@ spec:
          service:
             name: targets
             port: 
-               number: 30090
+               name: use-annotation
      - path: /
        pathType: Prefix
        backend:
