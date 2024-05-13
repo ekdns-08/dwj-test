@@ -25,7 +25,7 @@ spec:
          service:
             name: external-test-service
             port: 
-               number: 80
+               number: 30090
      - path: /
        pathType: Prefix
        backend:
