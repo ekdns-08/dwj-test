@@ -26,6 +26,8 @@ spec:
        backend:
          service:
             name: external-test-service
+            port: 
+               name: use-annotation
      - path: /
        pathType: Prefix
        backend:
