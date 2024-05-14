@@ -19,13 +19,6 @@ spec:
   rules:
   - http:
      paths:
-     - path: /bsp/mtv
-       pathType: Prefix
-       backend:
-         service:
-            name: headless-to-mtv
-            port: 
-              number: 5000
      - path: /
        pathType: Prefix
        backend:
