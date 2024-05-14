@@ -11,7 +11,7 @@ metadata:
     alb.ingress.kubernetes.io/enable-sticky-session: 'true'
     alb.ingress.kubernetes.io/actions.test-server-svc: >
       {"type":"targetGroup","targetGroup":{"targetGroups":[{"serviceName":"test-server-svc","servicePort":80,"weight":100}],"enableStickySession":true}}
-    alb.ingress.kubernetes.io/actions.test-mtv-svc: >
+    alb.ingress.kubernetes.io/actions.test-mtv-svc.mtv-dotnet.svc.cluster.local: >
       {"type":"targetGroup","targetGroup":{"targetGroups":[{"serviceName":"test-mtv-svc.mtv-dotnet.svc.cluster.local","servicePort":5000,"weight":100}],"enableStickySession":true}}
     alb.ingress.kubernetes.io/healthcheck-path: "/"
   labels:
@@ -25,7 +25,7 @@ spec:
        pathType: Prefix
        backend:
          service:
-            name: test-mtv-svc
+            name: test-mtv-svc.mtv-dotnet.svc.cluster.local
             port: 
               number: 5000
      - path: /
