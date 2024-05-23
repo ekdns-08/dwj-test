@@ -1,1 +1,3 @@
-he
+replicas: 3
+minimumMasterNodes: 1
+esMajorVersion: 7
