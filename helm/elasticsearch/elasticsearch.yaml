@@ -1,0 +1,3 @@
+image:
+  repository: seoulbigdata-registry.ncr.gov-ntruss.com/nls-docker-elasticsearch
+  tag: 7.10.2
